@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import './App.css';
+import { CardList } from './components/card-list/card-list.components';
 
 export default class App extends Component{
   constructor(){
@@ -16,9 +17,7 @@ export default class App extends Component{
   render(){
       return (
         <div className="App">
-          {
-            this.state.user.map(data=> <h1>{data.name}</h1>)
-          }
+          <CardList user={this.state.user}/>
         </div>
       );
   }
