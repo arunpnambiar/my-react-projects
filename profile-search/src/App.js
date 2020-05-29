@@ -1,20 +1,27 @@
 import React,{Component} from 'react';
 import './App.css';
 
-class App extends Component{
+export default class App extends Component{
   constructor(){
     super()
     this.state ={
-      'message':"Welcome to react world"
+      user:[]
     }
+  }
+  componentDidMount(){
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response=>response.json())
+        .then(response=>this.setState({user:response}))
   }
   render(){
       return (
         <div className="App">
-          <h1>{this.state.message}</h1>
+          {
+            this.state.user.map(data=> <h1>{data.name}</h1>)
+          }
         </div>
       );
   }
 }
 
-export default App;
+
